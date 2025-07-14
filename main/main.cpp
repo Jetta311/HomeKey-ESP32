@@ -8,6 +8,8 @@
 #include "HomeKey.h"
 #include "array"
 #include "logging.h"
+#include "fingerprint.h"
+#include "fingerprint.cpp"
 #include "HomeSpan.h"
 #include "PN532_SPI.h"
 #include "PN532.h"
