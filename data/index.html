@@ -2,6 +2,19 @@
 <html>
 
 <head>
+
+  <script>
+    function enrollFingerprint() {
+        fetch('/enroll', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Fehler beim Anlernen des Fingerabdrucks:', error);
+            });
+    }
+</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/misc.css">
