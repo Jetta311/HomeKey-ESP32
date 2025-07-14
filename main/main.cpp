@@ -40,6 +40,20 @@ TaskHandle_t alt_action_task_handle = nullptr;
 TaskHandle_t nfc_reconnect_task = nullptr;
 TaskHandle_t nfc_poll_task = nullptr;
 
+server.on("/enroll", HTTP_POST, [](AsyncWebServerRequest *request) {
+  #include <Adafruit_Fingerprint.h>
+#include <ESPAsyncWebServer.h>
+
+// Definiere die Pins für den Fingerabdrucksensor
+#define FINGERPRINT_RX 16
+#define FINGERPRINT_TX 17
+
+// Initialisiere den Fingerabdrucksensor
+HardwareSerial fingerSerial(FINGERPRINT_RX, FINGERPRINT_TX);
+Adafruit_Fingerprint finger = Adafruit_Fingerprint(&
+    request->send(200, "application/json", "{\"message\":\"Fingerprint enrollment started\"}");
+});
+
 nvs_handle savedData;
 readerData_t readerData;
 uint8_t ecpData[18] = { 0x6A, 0x2, 0xCB, 0x2, 0x6, 0x2, 0x11, 0x0 };
